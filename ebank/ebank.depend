@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1771002648 source:c:\users\lenovo yoga\desktop\cours\langage c\projets\ebank\main.c
+	"headers.h"
+
+1771002506 source:c:\users\lenovo yoga\desktop\cours\langage c\projets\ebank\ebank.c
+	"headers.h"
+
+1771002725 c:\users\lenovo yoga\desktop\cours\langage c\projets\ebank\headers.h
+	"ebank.h"
+	<time.h>
+	<stdio.h>
+	<string.h>
+
+1771002280 c:\users\lenovo yoga\desktop\cours\langage c\projets\ebank\ebank.h
+
+1772003252 source:c:\users\djim\desktop\projetc_exam\ebank\ebank.c
+	"headers.h"
+
+1772068237 c:\users\djim\desktop\projetc_exam\ebank\headers.h
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ebank.h"
+
+1772001763 c:\users\djim\desktop\projetc_exam\ebank\ebank.h
+
+1772004249 source:c:\users\djim\desktop\projetc_exam\ebank\main.c
+	"headers.h"
+
