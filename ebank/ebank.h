@@ -8,8 +8,6 @@ typedef struct
     int seconde;
 } DATETIME;
 
-int phoneValide(int phone);
-
 
 typedef struct
 {
@@ -17,6 +15,8 @@ typedef struct
     char prenom[50];
     int phone;
 } Customer;
+
+
 typedef struct
 {
     char numero[45];
@@ -64,3 +64,4 @@ void genererRelevePDF(char numeroCompte[], char type[]);
 void genererResumePDF(char numeroCompte[], char type[]);
 int nombreOperationsParCompte(char numeroCompte[]);
 int nombreOperationsParCompteEtType(char numeroCompte[], char type[]);
+int phoneValide(int phone);

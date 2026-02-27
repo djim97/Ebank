@@ -46,7 +46,7 @@ char *generateNumeroOperation()
 char *creerCompte(Customer customer)
 {
     ACCOUNT acc;
-    acc.balance = 0;
+    acc.balance = 0.0;
     strcpy(acc.status, "ACTIF");
     acc.createdAt = getCurrentDateTime();
     acc.owner = customer;
@@ -140,7 +140,7 @@ void depot(char numeroCompte[], float amount)
     while(fread(&acc, sizeof(ACCOUNT), 1, f) == 1)
     {
         if(strcasecmp(numeroCompte, acc.numero) == 0)
-        {   
+        {
             if(strcmp(acc.status, "INACTIF") == 0)
             {
                 puts("Ce compte est desactive. Operation impossible.");
@@ -468,6 +468,7 @@ void genererRelevePDF(char numeroCompte[], char type[])
     len += sprintf(content + len, "0 -5 Td\n");
     len += sprintf(content + len, "(--------------------------------------------------------------) Tj\n");
 
+    float total = 0;
     FILE *fop = fopen(FILE_OPERATIONS, "rb");
     if(fop != NULL)
     {
@@ -484,10 +485,20 @@ void genererRelevePDF(char numeroCompte[], char type[])
                 len += sprintf(content + len, "0 -14 Td\n");
                 len += sprintf(content + len, "(%-12s %-20s %12.2f   %-10s) Tj\n",
                     op.numero, dateBuf, op.amount, op.type);
+                total += op.amount;
             }
         }
         fclose(fop);
     }
+
+    len += sprintf(content + len, "0 -5 Td\n");
+    len += sprintf(content + len, "(--------------------------------------------------------------) Tj\n");
+    len += sprintf(content + len, "/F1 11 Tf\n");
+    len += sprintf(content + len, "0 -18 Td\n");
+    if(strcmp(type, "TOUS") == 0)
+        len += sprintf(content + len, "(TOTAL                                    : %.2f FCFA) Tj\n", total);
+    else
+        len += sprintf(content + len, "(TOTAL %s                              : %.2f FCFA) Tj\n", type, total);
 
     len += sprintf(content + len, "0 -30 Td\n");
     len += sprintf(content + len, "/F1 8 Tf\n");
