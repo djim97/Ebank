@@ -49,13 +49,13 @@ int main()
                 scanf(" %44[^\n]", newCustomer.nom);
                 printf("Prenom du client : ");
                 scanf(" %49[^\n]", newCustomer.prenom);
-                printf("Numero de telephone du client : ");
-                scanf("%d", &newCustomer.phone);
-                if(!phoneValide(newCustomer.phone))
+                do
                 {
-                    puts("Numero de telephone invalide, il doit comporter 9 chiffres et commencer par 77, 78, 75, 76 ou 70");
-                    break;
-                }
+                    printf("Numero de telephone du client : ");
+                    scanf("%d", &newCustomer.phone);
+                    if(!phoneValide(newCustomer.phone))
+                        puts("Numero de telephone invalide, il doit comporter 9 chiffres et commencer par 77, 78, 75, 76 ou 70");
+                } while(!phoneValide(newCustomer.phone));
                 Customer *exists = rechercherCustomerParnumero(newCustomer.phone);
                 if(exists != NULL)
                 {
